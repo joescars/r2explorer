@@ -23,5 +23,5 @@ COPY --from=server-build --chown=node:node /server/dist ./dist
 COPY --from=web-build --chown=node:node /web/dist /app/web/dist
 USER node
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||3000)+'/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s CMD node -e "require('http').get({host:'127.0.0.1',port:process.env.PORT||3000,path:'/healthz'},r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"
 CMD ["npm", "start"]
