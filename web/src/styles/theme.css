@@ -1,0 +1,258 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/roboto';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ---------------------------------------------------------------------------
+   Material 3–inspired color roles. A Google-blue palette, tuned to match the
+   tonal layering used across Gmail, Calendar and Drive. Every surface the app
+   paints is expressed as one of these roles — that is what makes the product
+   feel consistent. Never hardcode hex values in components.
+--------------------------------------------------------------------------- */
+:root,
+[data-theme='light'] {
+  --m3-primary: #0b57d0;
+  --m3-on-primary: #ffffff;
+  --m3-primary-container: #d3e3fd;
+  --m3-on-primary-container: #041e49;
+  --m3-secondary: #5f6368;
+  --m3-secondary-container: #dae2f9;
+  --m3-on-secondary-container: #171e2b;
+  --m3-tertiary: #754b91;
+  --m3-tertiary-container: #f0dbff;
+  --m3-error: #c5221f;
+  --m3-on-error: #ffffff;
+  --m3-error-container: #f9dedc;
+  --m3-on-error-container: #601a16;
+  --m3-success: #188038;
+  --m3-success-container: #ceead6;
+  --m3-on-success-container: #0d3c1a;
+  --m3-warning: #b06000;
+  --m3-warning-container: #feefc3;
+  --m3-on-warning-container: #412a00;
+  --m3-info: #1a73e8;
+  --m3-info-container: #d3e3fd;
+  --m3-on-info-container: #041e49;
+
+  --m3-background: #f8f9fa;
+  --m3-surface: #ffffff;
+  --m3-surface-dim: #eceff1;
+  --m3-surface-container-lowest: #ffffff;
+  --m3-surface-container-low: #f4f7fb;
+  --m3-surface-container: #eef2f8;
+  --m3-surface-container-high: #e6ecf4;
+  --m3-surface-container-highest: #dfe6ef;
+  --m3-on-surface: #1f1f1f;
+  --m3-on-surface-variant: #5f6368;
+  --m3-outline: #b8bcc1;
+  --m3-outline-variant: #dadce0;
+  --m3-scrim: rgba(0, 0, 0, 0.5);
+  --m3-inverse-surface: #303134;
+  --m3-inverse-on-surface: #f1f3f4;
+  --m3-elevate-1: 0 1px 2px rgba(60, 64, 67, 0.15), 0 1px 3px 1px rgba(60, 64, 67, 0.1);
+  --m3-elevate-2: 0 1px 2px rgba(60, 64, 67, 0.18), 0 2px 6px 2px rgba(60, 64, 67, 0.12);
+  --m3-elevate-3: 0 4px 8px 3px rgba(60, 64, 67, 0.14), 0 1px 3px rgba(60, 64, 67, 0.16);
+}
+
+[data-theme='dark'] {
+  --m3-primary: #8ab4f8;
+  --m3-on-primary: #062751;
+  --m3-primary-container: #0a3c7e;
+  --m3-on-primary-container: #d3e3fd;
+  --m3-secondary: #5f6368;
+  --m3-secondary-container: #00477b;
+  --m3-on-secondary-container: #a1c9ff;
+  --m3-tertiary: #d0a9ff;
+  --m3-tertiary-container: #311b5c;
+  --m3-error: #f28b82;
+  --m3-on-error: #601410;
+  --m3-error-container: #5c2b26;
+  --m3-on-error-container: #f9dedc;
+  --m3-success: #81c995;
+  --m3-success-container: #0e3d1d;
+  --m3-on-success-container: #ceead6;
+  --m3-warning: #fdd663;
+  --m3-warning-container: #4a3203;
+  --m3-on-warning-container: #feefc3;
+  --m3-info: #8ab4f8;
+  --m3-info-container: #0a3c7e;
+  --m3-on-info-container: #d3e3fd;
+
+  --m3-background: #101214;
+  --m3-surface: #16191c;
+  --m3-surface-dim: #0d0f11;
+  --m3-surface-container-lowest: #111315;
+  --m3-surface-container-low: #181b1e;
+  --m3-surface-container: #1d2124;
+  --m3-surface-container-high: #252a2e;
+  --m3-surface-container-highest: #2f3438;
+  --m3-on-surface: #e3e6e8;
+  --m3-on-surface-variant: #9aa0a6;
+  --m3-outline: #6b7075;
+  --m3-outline-variant: #3c4043;
+  --m3-scrim: rgba(0, 0, 0, 0.6);
+  --m3-inverse-surface: #e3e6e8;
+  --m3-on-inverse-surface: #1f1f1f;
+  --m3-inverse-on-surface: #1f1f1f;
+  --m3-elevate-1: 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 3px 1px rgba(0, 0, 0, 0.25);
+  --m3-elevate-2: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+  --m3-elevate-3: 0 4px 8px 3px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-primary: var(--m3-primary);
+  --color-on-primary: var(--m3-on-primary);
+  --color-primary-container: var(--m3-primary-container);
+  --color-on-primary-container: var(--m3-on-primary-container);
+  --color-secondary-container: var(--m3-secondary-container);
+  --color-on-secondary-container: var(--m3-on-secondary-container);
+  --color-tertiary-container: var(--m3-tertiary-container);
+  --color-on-tertiary-container: var(--m3-on-tertiary-container);
+  --color-error: var(--m3-error);
+  --color-on-error: var(--m3-on-error);
+  --color-error-container: var(--m3-error-container);
+  --color-on-error-container: var(--m3-on-error-container);
+  --color-success: var(--m3-success);
+  --color-success-container: var(--m3-success-container);
+  --color-on-success-container: var(--m3-on-success-container);
+  --color-warning: var(--m3-warning);
+  --color-warning-container: var(--m3-warning-container);
+  --color-on-warning-container: var(--m3-on-warning-container);
+  --color-info: var(--m3-info);
+  --color-info-container: var(--m3-info-container);
+  --color-on-info-container: var(--m3-on-info-container);
+  --color-background: var(--m3-background);
+  --color-surface: var(--m3-surface);
+  --color-surface-dim: var(--m3-surface-dim);
+  --color-surface-lowest: var(--m3-surface-container-lowest);
+  --color-surface-low: var(--m3-surface-container-low);
+  --color-surface-container: var(--m3-surface-container);
+  --color-surface-high: var(--m3-surface-container-high);
+  --color-surface-highest: var(--m3-surface-container-highest);
+  --color-on-surface: var(--m3-on-surface);
+  --color-on-surface-variant: var(--m3-on-surface-variant);
+  --color-outline: var(--m3-outline);
+  --color-outline-variant: var(--m3-outline-variant);
+  --color-inverse-surface: var(--m3-inverse-surface);
+  --color-inverse-on-surface: var(--m3-inverse-on-surface);
+  --font-sans: 'Roboto Variable', 'Google Sans', Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Roboto Mono Variable', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --shadow-e1: var(--m3-elevate-1);
+  --shadow-e2: var(--m3-elevate-2);
+  --shadow-e3: var(--m3-elevate-3);
+}
+
+/* ------------------------------ base layer ------------------------------ */
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--m3-background);
+  color: var(--m3-on-surface);
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+}
+
+:focus-visible {
+  outline: 2px solid var(--m3-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Unobtrusive scrollbars that match the theme */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--m3-outline-variant) transparent;
+}
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--m3-outline-variant); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* M3-style state layers: subtle tint on hover/press for interactive surfaces */
+@utility state-layer {
+  position: relative;
+  isolation: isolate;
+}
+.state-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 120ms ease;
+  pointer-events: none;
+}
+.state-layer:hover::before { opacity: 0.07; }
+.state-layer:active::before,
+.state-layer[aria-pressed='true']::before { opacity: 0.11; }
+
+/* Skeleton shimmer */
+@keyframes rt-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--m3-surface-container) 25%,
+    var(--m3-surface-container-high) 50%,
+    var(--m3-surface-container) 75%
+  );
+  background-size: 800px 100%;
+  animation: rt-shimmer 1.4s linear infinite;
+  border-radius: 8px;
+}
+
+/* Snacks & dialogs */
+@keyframes rt-slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes rt-scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes rt-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.anim-slide-up { animation: rt-slide-up 200ms cubic-bezier(0.2, 0, 0, 1); }
+.anim-scale-in { animation: rt-scale-in 180ms cubic-bezier(0.2, 0, 0, 1); }
+.anim-fade-in { animation: rt-fade-in 150ms ease; }
+
+@keyframes rt-spin { to { transform: rotate(360deg); } }
+.anim-spin { animation: rt-spin 0.9s linear infinite; }
+
+@keyframes rt-indeterminate {
+  0% { left: -40%; width: 30%; }
+  50% { left: 30%; width: 50%; }
+  100% { left: 100%; width: 30%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Token additions */
+html { color-scheme: light; }
+[data-theme='dark'] { color-scheme: dark; }
+@theme inline { --color-on-tertiary-container: var(--m3-on-tertiary-container, #2b0f45); --color-secondary-container: var(--m3-secondary-container); }
